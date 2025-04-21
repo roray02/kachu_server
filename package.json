@@ -4,8 +4,8 @@
   "description": "Kachu Card Game Server",
   "main": "src/server/index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node src/server/index.js",
+    "dev": "nodemon src/server/index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
