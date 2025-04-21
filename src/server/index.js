@@ -6,7 +6,7 @@ const { server, io } = require('./gameServer');
 const PORT = process.env.PORT || 3001;
 
 // Listen on all network interfaces (important for deployment)
-server.listen(PORT, '0.0.0.0', () => {
+httpServer.listen(PORT, () => {
   console.log(`Game server running on port ${PORT}`);
   console.log('Server URL:', process.env.FRONTEND_URL || 'Development mode - accepting all origins');
 });
