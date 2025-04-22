@@ -33,6 +33,24 @@ app.get('/health', (req, res) => {
   res.status(200).send('Game server is running');
 });
 
+// ADD THIS DEBUG ENDPOINT for inspecting all current lobbies
+app.get('/lobbies', (req, res) => {
+  // Construct an array of lobby debug info
+  const lobbyList = Array.from(lobbies.entries()).map(([lobbyCode, gameState]) => ({
+    lobbyCode,
+    phase: gameState.phase,
+    round: gameState.round,
+    maxRounds: gameState.maxRounds,
+    players: gameState.players.map(player => ({
+      id: player.id,
+      name: player.name,
+      isConnected: player.isConnected,
+      isHost: player.isHost,
+    })),
+  }));
+  res.status(200).json({ count: lobbyList.length, lobbies: lobbyList });
+  });
+
 // Add a root endpoint for easy checking
 app.get('/', (req, res) => {
   res.status(200).send('Game server is running');
